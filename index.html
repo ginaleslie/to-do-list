@@ -42,16 +42,21 @@
 
 		<script id="list-template" type="text/x-handlebars-template">
 			<div>
-				<h2>
-					Item
-				</h2>
+				<div class="flex">
+					<h2>
+						Item
+					</h2>
+					<h2 class="float">
+						Date
+					</h2>
+				</div>
 				<ul class="plates">
 					{{#items}}
 						<li>
-							{{text}} - &nbsp; Complete by: &nbsp;
-							<b>
+							{{text}}
+							<label class="float">
 								{{date}}
-							</b>
+							</label>
 						</li>
 					{{/items}}
 				</ul>

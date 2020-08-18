@@ -100,3 +100,10 @@ li:before {
 	align-items: baseline;
 	margin-top: -16px;
 }
+.float {
+	float: right;
+}
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
