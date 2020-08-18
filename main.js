@@ -76,7 +76,9 @@ function addItem(e) {
 
 function PopulateListWithItems() {
 	var taskTemplate = $("#list-template").html();
+
 	var compileTaskTemplate = Handlebars.compile(taskTemplate);
+
 	var html = compileTaskTemplate({
 		items: items,
 	});
