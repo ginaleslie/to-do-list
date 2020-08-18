@@ -1,0 +1,10 @@
+{
+  "name": "exercise2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.7.6",
+    "jquery": "^3.5.1"
+  }
+}
