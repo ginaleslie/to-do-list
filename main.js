@@ -14,65 +14,33 @@ var html = templateScript(context);
 // Insert the HTML code into the page
 $("#title-heading").append(html);
 
-const addItems = $(".add-items");
-const clearItems = $(".clear-items");
-const itemsList = $(".plates");
+var addItems = $(".add-items");
+var clearItems = $(".clear-items");
+var itemsList = $(".plates");
 
-const items = JSON.parse(localStorage.getItem("items")) || [];
-// const dates = JSON.parse(localStorage.getItem("dates")) || [];
+var items = JSON.parse(localStorage.getItem("items")) || [];
 
 function addItem(e) {
-	e.preventDefault(); //Default for a form is to reload the page
+	e.preventDefault();
+	var textVal = $("input[name=item]").val();
+	var dateVal = $("input[name=date]").val();
+	// var dateVal = this.querySelector("[name=date]").value;
 
-	const textVal = $("input[name=item]").val();
-	const dateVal = $("input[name=date]").val();
-	// const dateVal = this.querySelector("[name=date]").value;
-
-	const item = {
+	var item = {
 		text: textVal,
 		date: dateVal,
 		done: false,
 		//define all item attributes here
 	};
 
-	// const date = {
-	// 	text: dateVal,
-	// 	done: false,
-	// 	//define all item attributes here
-	// };
-
 	items.push(item);
-	// dates.push(date);
-	//This adds the newly created item to the items array
 
 	PopulateListWithItems();
-	// PopulateDateListWithItems(dateList, dates); //This method will update a list with the data in the items array
 
 	localStorage.setItem("items", JSON.stringify(items));
-	// localStorage.setItem("dates", JSON.stringify(dates));
 
 	this.reset();
 }
-
-// function MapItemDataToHTMLList(listItem) {
-// 	return `
-// 	<li>
-// 		<label>${listItem.text}</label>
-// 	</li>
-// 	`;
-// }
-// function MapItemDataTodateHTMLList(dateItem) {
-// 	return `
-// 	<li>
-// 		<label>${dateItem.text}</label><input type="checkbox" />
-// 	</li>
-
-// 	`;
-// }
-
-// function PopulateListWithItems(htmlList, listItems = []) {
-// 	htmlList.innerHTML = listItems.map(MapItemDataToHTMLList).join("");
-// }
 
 function PopulateListWithItems() {
 	var taskTemplate = $("#list-template").html();
@@ -86,17 +54,11 @@ function PopulateListWithItems() {
 	$("#task-container").empty().append(html);
 }
 
-// function PopulateDateListWithItems(dateHtmlList, dateItems = []) {
-// 	dateHtmlList.innerHTML = dateItems.map(MapItemDataTodateHTMLList).join("");
-// }
 function forgetItems(e) {
 	localStorage.setItem("items", JSON.stringify([]));
 }
 
-// addItems.addEventListener("submit", addItem);
 addItems.on("submit", addItem);
 clearItems.on("submit", forgetItems);
-// clearItems.addEventListener("submit", forgetItems);
 
 PopulateListWithItems();
-// PopulateDateListWithItems(dateList, dates);
